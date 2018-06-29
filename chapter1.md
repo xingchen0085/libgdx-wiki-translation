@@ -24,13 +24,22 @@ Wiki 的链接请使用`[[` 和 `]]` ，链接和文本之间请使用`|`分隔�
 
 例子：
 
-`[[link text to simple game | A simple game]] `将被解析为：[A simple game](https://github.com/libgdx/libgdx/wiki/A-simple-game) 
+`[[link text to simple game | A simple game]]`将被解析为：[A simple game](https://github.com/libgdx/libgdx/wiki/A-simple-game)
 
-注意不要使用常规的` []()` 作为Wiki的链接。
+注意不要使用常规的`[]()` 作为Wiki的链接。
 
 ## 代码/文档链接
 
-代码或者文档的链接，请以下述方法编写：`[ClassName](link to docs) [(code)](link to code) `，例子：
+代码或者文档的链接，请以下述方法编写：`[ClassName](link to docs) [(code)](link to code)`，例子：
+
+```
+[Texture](http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/Texture.html)
+[(code)](https://github.com/libgdx/libgdx/tree/master/gdx/src/com/badlogic/gdx/graphics/Texture.java)
+```
+
+将被渲染为：[Texture](http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/Texture.html) [\(code\)](https://github.com/libgdx/libgdx/tree/master/gdx/src/com/badlogic/gdx/graphics/Texture.java)
+
+不要使用非字母字符作为 Wiki 页面名称，因为当Wiki 作为 Git 仓库导出后，不是所有的操作系统都能够处理或者支持这些字符。（比如 Windows 不支持 " : "）。
 
 
 
