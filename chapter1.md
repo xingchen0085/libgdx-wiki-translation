@@ -4,7 +4,11 @@
 
 ## 问题
 
-关于如何编辑此Wiki，如果您有任何问题，不要犹豫。点击这里访问我们的社区页面获取详情。
+如果您对如何编辑此Wiki有任何问题，不要犹豫。[点击这里](https://github.com/libgdx/libgdx/wiki/Community-%26amp%3B-Support)访问我们的社区页面获取详情。
+
+## 基础语法
+
+此Wiki 使用的是 Markerdown 编写，点击这里获取 Markerdown语法参考
 
 
 
