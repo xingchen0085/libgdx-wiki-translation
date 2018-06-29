@@ -64,7 +64,7 @@ http://libgdx.badlogicgames.comightlies/docs/api/com/badlogic/gdx/graphics/Textu
 
 #### 视频
 
-Github 不支持视频。所以我们可以使用这样的解决办法，给视频截一个图片，再将其链接到视频地址（youtube等）。下面是编辑语法：
+Github 不支持视频。所以我们可以使用这样的解决办法，给视频截取一个图片，再将其链接到视频地址（youtube等）。下面是编辑语法：
 
 ```
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=YOUTUBE_VIDEO_ID_HERE" target="_blank">
@@ -75,17 +75,13 @@ Github 不支持视频。所以我们可以使用这样的解决办法，给视�
 
 但愿 Github 能够尽快支持视频。
 
-#### 边栏问题
+#### 侧边栏问题
 
-在这个 Wiki 中使用边栏可能会导致原先的文本产生一些问题，
+在这个 Wiki 中使用边栏可能会让原本的内容产生一些问题，比如下面这个例子：
 
+`http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/Texture.html#getWidth()`
 
-
-
-
-
-
-
+上面的链接添加之后可能会导致侧边栏的样式发生变化，为了解决此问题，可以把这样的长链接地址使用 三个反引号（\`\`\`）包围，并将其放置到下一行。
 
 
 
