@@ -39,7 +39,7 @@ Wiki 的链接请使用`[[` 和 `]]` ，链接和文本之间请使用`|`分隔�
 
 将被渲染为：[Texture](http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/Texture.html) [\(code\)](https://github.com/libgdx/libgdx/tree/master/gdx/src/com/badlogic/gdx/graphics/Texture.java)
 
-不要使用非字母字符作为 Wiki 页面名称，因为当Wiki 作为 Git 仓库导出后，不是所有的操作系统都能够处理或者支持这些字符。（比如 Windows 不支持 " : "）。
+不要使用非字母字符作为 Wiki 页面名称，因为当Wiki 作为 Git 仓库导出后，不是所有的操作系统都能够处理或者支持这些字符。（比如 Windows 不支持 `" : "`）。
 
 #### 文档链接注意
 
@@ -47,10 +47,16 @@ Wiki 的链接请使用`[[` 和 `]]` ，链接和文本之间请使用`|`分隔�
 
 * 请使用英文单词来格式化 `Classname (Code)` ，不要使用源代码或者其他派生词。
 
-* 如果链接或者文档名称是以 " \) " 结尾的，Markerdown 会解析该 " \) "，导致链接混乱。以此为例：
+* 如果链接或者文档名称是以 `" ) "` 结尾的，Markerdown 会解析该 `" ) "`，导致链接混乱。以此为例：
 
 ```
 http://libgdx.badlogicgames.comightlies/docs/api/com/badlogic/gdx/graphics/Texture.html#getWidth()
+```
+
+上面的链接，经过Markerdown 解析之后就会混乱，所以需要记住 右括号` " ) " ` 需要转义，如下：
+
+```
+[Link to Texture#getWidth](http://libgdx.badlogicgames.comightlies/docs/api/com/badlogic/gdx/graphics/Texture.html#getWidth(\))
 ```
 
 
