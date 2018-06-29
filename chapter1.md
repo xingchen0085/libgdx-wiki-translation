@@ -8,7 +8,5 @@
 
 ## 基础语法
 
-此Wiki 使用的是 Markerdown 编写，点击这里获取 Markerdown语法参考
-
-
+此Wiki 使用的是 Markerdown 编写，点击这里获取 Markerdown 语法参考
 
