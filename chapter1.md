@@ -56,12 +56,50 @@ http://libgdx.badlogicgames.comightlies/docs/api/com/badlogic/gdx/graphics/Textu
 上面的链接，经过Markerdown 解析之后就会混乱，所以需要记住 右括号`" ) "` 需要转义，如下：
 
 ```
-[Link to Texture#getWidth](http://libgdx.badlogicgames.comightlies/docs/api/com/badlogic/gdx/graphics/Texture.html#getWidth(\))
+[Link to Texture#getWidth](http:
+//libgdx.badlogicgames.comightlies/docs/api/com/badlogic/gdx/graphics/Texture.html#getWidth(\))
 ```
 
 如果没有转义，就会出现 404 错误。
 
 #### 视频
+
+Github 不支持视频。所以我们可以使用这样的解决办法，给视频截一个图片，再将其链接到视频地址（youtube等）。下面是编辑语法：
+
+```
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=YOUTUBE_VIDEO_ID_HERE" target="_blank">
+ <img src="http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg"
+  alt="IMAGE ALT TEXT HERE" width="480" height="360" border="10" />
+</a>
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
