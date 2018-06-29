@@ -45,6 +45,13 @@ Wiki 的链接请使用`[[` 和 `]]` ，链接和文本之间请使用`|`分隔�
 
 * 请注意 `ClassName (Code)` ， `Classname` 和 `(Code)` 之间有一个空格，以作区分。
 
-* 
+* 请使用英文单词来格式化 `Classname (Code)` ，不要使用源代码或者其他派生词。
+
+* 如果链接或者文档名称是以 " \) " 结尾的，Markerdown 会解析该 " \) "，导致链接混乱。以此为例：
+
+```
+http://libgdx.badlogicgames.comightlies/docs/api/com/badlogic/gdx/graphics/Texture.html#getWidth()
+```
+
 
 
