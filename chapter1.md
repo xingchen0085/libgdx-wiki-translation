@@ -12,7 +12,7 @@
 
 ## 风格
 
-这一部分主要就是为了能够看上去风格能够基本一致。
+这一部分主要就是为了能够看上去风格基本一致。
 
 确保每个标题前后有相同的符号出现，例如 `##test` 可以被解析为`<h2>` ，但是为了看起来更清晰，请使用 `##test##`代替 `##test` 。
 
@@ -53,11 +53,17 @@ Wiki 的链接请使用`[[` 和 `]]` ，链接和文本之间请使用`|`分隔�
 http://libgdx.badlogicgames.comightlies/docs/api/com/badlogic/gdx/graphics/Texture.html#getWidth()
 ```
 
-上面的链接，经过Markerdown 解析之后就会混乱，所以需要记住 右括号` " ) " ` 需要转义，如下：
+上面的链接，经过Markerdown 解析之后就会混乱，所以需要记住 右括号`" ) "` 需要转义，如下：
 
 ```
 [Link to Texture#getWidth](http://libgdx.badlogicgames.comightlies/docs/api/com/badlogic/gdx/graphics/Texture.html#getWidth(\))
 ```
+
+如果没有转义，就会出现 404 错误。
+
+#### 视频
+
+
 
 
 
