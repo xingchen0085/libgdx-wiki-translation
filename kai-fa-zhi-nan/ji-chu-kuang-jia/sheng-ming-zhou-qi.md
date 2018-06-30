@@ -4,7 +4,7 @@ Libgdx 应用程序具有明确定义的生命周期，用于管理应用程序�
 
 ## ApplicationListener
 
-开发人员实现 [ApplicationListener ](https://libgdx.badlogicgames.com/ci/nightlies/docs/api/com/badlogic/gdx/ApplicationListener.html)，然后将该类的实例传递给 `Application`，由 `Application `来处理（参考上一节 [基础框架介绍](/kai-fa-zhi-nan/ji-chu-kuang-jia.md)）。这样一来，每次发生程序级事件时，`Application `会触发`ApplicationListener `事件。下面是一个很简单的 `ApplicationListener `实现。
+开发人员实现 [ApplicationListener ](https://libgdx.badlogicgames.com/ci/nightlies/docs/api/com/badlogic/gdx/ApplicationListener.html)，然后将该类的实例传递给 `Application`，由 `Application`来处理（参考上一节 [基础框架介绍](/kai-fa-zhi-nan/ji-chu-kuang-jia.md)）。这样一来，每次发生程序级事件时，`Application`会触发`ApplicationListener`事件。下面是一个很简单的 `ApplicationListener`实现。
 
 ```java
 public class MyGame implements ApplicationListener {
@@ -28,13 +28,48 @@ public class MyGame implements ApplicationListener {
 }
 ```
 
-另外，你也可以通过继承 [ApplicationAdapter](http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/ApplicationAdapter.html) ，从而不去实现`ApplicationListener `的所有方法。
+另外，你也可以通过继承 [ApplicationAdapter](http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/ApplicationAdapter.html) ，从而不去实现`ApplicationListener`的所有方法。
 
-一旦传递给 `Application `，`ApplicationListener `调用情况如下所示：
+一旦传递给 `Application`，`ApplicationListener`调用情况如下所示：
 
 | 方法名 | 描述 |
 | :--- | :--- |
-| create\(\) | 当 Application 创建时调用一次且只会调用一次 |
+| create\(\) | 当 Application 创建时调用一次且只会调用一次。 |
+| resize\(int width,int height\) | 这个方法将会在应用程序非暂停情况下，每次窗口大小改变时调起。另外，会在调起 create\(\) 方法之后调用一次。参数是每次窗口大小更新之后的宽高像素值。 |
+| render\(\) | 应用程序每次执行循环都会调用该方法，通常也是在该方法内部执行游戏逻辑代码更新。 |
+| pause\(\) | 在安卓平台上，按下 Home 键之后，会触发该方法。在桌面平台，只会在应用程序退出或关闭的时候，在 dispose\(\) 方法前面执行一次该方法。通常来说，这里是保存游戏状态的好地方。 |
+| resume\(\) | 该方法只会在安卓平台触发，当游戏从暂停状态恢复时执行。 |
+| dispose\(\) | 应用程序退出/关闭时执行，再执行该方法之前会先执行 pause\(\) 方法。 |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
