@@ -34,7 +34,7 @@ public class MyGame implements ApplicationListener {
 
 | 方法名 | 描述 |
 | :--- | :--- |
-| create\(\) | 当 Application 创建时调用且该方法只会调用一次。 |
+| create\(\) | 当 Application 创建时调用且该方法只会被调用一次。 |
 | resize\(int width,int height\) | 这个方法将会在应用程序非暂停情况下，每次窗口大小改变时调起。另外，会在调起 create\(\) 方法之后调用一次。参数是每次窗口大小更新之后的宽高像素值。 |
 | render\(\) | 应用程序每次执行循环都会调用该方法，通常也是在该方法内部执行游戏逻辑代码更新。 |
 | pause\(\) | 在安卓平台上，按下 Home 键之后，会触发该方法。在桌面平台，只会在应用程序退出或关闭的时候，在 dispose\(\) 方法前面执行一次该方法。通常来说，这里是保存游戏状态的好地方。 |
