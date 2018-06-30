@@ -53,5 +53,5 @@ public class MyGame implements ApplicationListener {
 
 如果你想要再安卓平台上处理动画逻辑，可以参考[这篇文章](http://bitiotic.com/blog/2013/05/23/libgdx-and-android-application-lifecycle/)。此文章还解释了为什么不推荐是用静态变量。
 
-平台上
+
 
