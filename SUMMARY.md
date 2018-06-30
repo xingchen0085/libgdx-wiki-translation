@@ -1,5 +1,5 @@
 # Summary
 
 * [介绍](README.md)
-* [Wiki 编辑指南](chapter1.md)
+* [Wiki编辑风格指南](wikibian-ji-feng-ge-zhi-nan.md)
 
