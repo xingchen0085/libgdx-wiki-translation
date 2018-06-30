@@ -60,7 +60,7 @@ http://libgdx.badlogicgames.comightlies/docs/api/com/badlogic/gdx/graphics/Textu
 //libgdx.badlogicgames.comightlies/docs/api/com/badlogic/gdx/graphics/Texture.html#getWidth(\))
 ```
 
-如果没有转义，就会出现 404 错误。
+如果没有转义，就会出现 404 错误或者链接到别的页面。
 
 #### 视频
 
