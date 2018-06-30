@@ -36,5 +36,25 @@ public class AndroidStarter extends AndroidApplication {
 }
 ```
 
+这两个类通常会位于不同的项目模块中，例如一个属于桌面项目模块，一个属于Android项目模块。关于使用Eclipese上，每个项目的分模块，运行和调试可以[点击这里](https://github.com/libgdx/libgdx/wiki/Project-setup,-running-&-debugging)获取更多帮助。
+
+应用程序（游戏）的实际代码位于实现 [ApplicationListener ](https://github.com/libgdx/libgdx/tree/master/gdx/src/com/badlogic/gdx/ApplicationListener.java)的类中（上面的 Mygame 就是一个例子）。将这个实现类的实例传递到每个不同平台的启动类中（参考上面代码），应用程序会在适当的时间调用 ApplicationListener 的方法（[点击这里](https://github.com/libgdx/libgdx/wiki/The-life-cycle)可以看到 Application 的生命周期资料）。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
