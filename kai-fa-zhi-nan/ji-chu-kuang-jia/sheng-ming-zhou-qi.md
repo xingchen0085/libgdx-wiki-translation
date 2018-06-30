@@ -4,7 +4,7 @@ Libgdx 应用程序具有明确定义的生命周期，用于管理应用程序�
 
 ## ApplicationListener
 
-开发人员实现 [ApplicationListener ](https://libgdx.badlogicgames.com/ci/nightlies/docs/api/com/badlogic/gdx/ApplicationListener.html)，然后将该类的实例传递给 `Application`，由 `Application`来处理（参考上一节 [基础框架介绍](/kai-fa-zhi-nan/ji-chu-kuang-jia.md)）。这样一来，每次发生程序级事件时，`Application`会触发`ApplicationListener`事件。下面是一个很简单的 `ApplicationListener`实现。
+开发人员实现 [ApplicationListener ](https://libgdx.badlogicgames.com/ci/nightlies/docs/api/com/badlogic/gdx/ApplicationListener.html)，然后将该类的实例传递给 `Application`，由 `Application`来处理（参考上一节 [基础框架介绍](/kai-fa-zhi-nan/ji-chu-kuang-jia.md)）。这样一来，每次发生程序级事件时，`Application`去调用实现类的对应方法。下面是一个简单的 `ApplicationListener`实现。
 
 ```java
 public class MyGame implements ApplicationListener {
@@ -30,7 +30,7 @@ public class MyGame implements ApplicationListener {
 
 另外，你也可以通过继承 [ApplicationAdapter](http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/ApplicationAdapter.html) ，从而不去实现`ApplicationListener`的所有方法。
 
-一旦传递给 `Application`，`ApplicationListener`调用情况如下所示：
+一旦实例传递给 `Application`，`ApplicationListener`调用方式如下：
 
 | 方法名 | 描述 |
 | :--- | :--- |
@@ -53,81 +53,5 @@ public class MyGame implements ApplicationListener {
 
 如果你想要再安卓平台上处理动画逻辑，可以参考[这篇文章](http://bitiotic.com/blog/2013/05/23/libgdx-and-android-application-lifecycle/)。此文章还解释了为什么不推荐是用静态变量。
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 平台上
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

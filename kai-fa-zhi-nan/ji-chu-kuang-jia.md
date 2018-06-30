@@ -53,5 +53,5 @@ public class AndroidStarter extends AndroidApplication {
 AudioDevice audioDevice = Gdx.audio.newAudioDevice(44100, false);
 ```
 
-`Gdx.audio` 是应用程序启动时实例化的底层 Audio 对象引用。其他的组件访问跟这样类似，比如`Gdx.app` 获取 Application 实例，`Gdx.files`获取文件操作实例等等。
+`Gdx.audio` 是应用程序启动时实例化的底层 Audio 对象引用。其他的组件访问跟这样类似，比如`Gdx.app` 获取 `Application` 实例，`Gdx.files`获取文件操作实例等等。
 
