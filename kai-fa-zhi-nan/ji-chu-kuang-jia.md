@@ -11,8 +11,6 @@ Libgdx 的核心由以下 6 个接口组成，由这 6 个组件负责与操作�
 * Audio ：提供播放音效和流式音乐的方法，还可以直接访问音频设备直接进行PCM 音频的输入和输出。
 * Graphics ：实现与OpenGL ES 2.0\(如果可用\)底层接口的交互 ，提供动画/模型相关的查询和设置（计算机图形学）。
 
-
-
 ## 启动类
 
 唯一需要根据不同平台编写不同的代码，就是启动类。对于不同的平台，有着不同的实例化实现。比如桌面端的启动类代码可能就跟以下示例类似，其底层实现是 Lwjgl。
@@ -55,5 +53,5 @@ public class AndroidStarter extends AndroidApplication {
 AudioDevice audioDevice = Gdx.audio.newAudioDevice(44100, false);
 ```
 
-`Gdx.audio` 是应用程序启动时实例化的底层 Audio 对象引用。其他的组件访问跟这样，比如`Gdx.app` 获取 Application 实例，`Gdx.files`获取文件操作实例等等。
+`Gdx.audio` 是应用程序启动时实例化的底层 Audio 对象引用。其他的组件访问跟这样类似，比如`Gdx.app` 获取 Application 实例，`Gdx.files`获取文件操作实例等等。
 
