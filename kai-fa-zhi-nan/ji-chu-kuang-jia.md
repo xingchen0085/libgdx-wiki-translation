@@ -46,18 +46,14 @@ public class AndroidStarter extends AndroidApplication {
 
 可以使用 Gdx 类中的静态字段访问上述的各个组件，本质上这是一组全局变量。虽然这样的设计并不好，但我们还是决定使用这一机制来缓解给各个地方引用传递和底层代码交互带来的复杂性。
 
-比如说，需要访问一个 Audio 组件，可以使用下面示例来实现：
+比如说，需要访问一个 Audio 组件，并让它创建一个音频示例，可以使用下面示例来实现：
 
 ```java
 // 创建一个 16-bit PCM 音频实例
 AudioDevice audioDevice = Gdx.audio.newAudioDevice(44100, false);
 ```
 
-
-
-
-
-
+`Gdx.audio` 是应用程序启动时实例化的底层 Audio 对象引用。其他的组件访问跟这样，比如` Gdx.app` 获取 Application 实例，`Gdx.files `获取文件操作实例等等。
 
 
 
