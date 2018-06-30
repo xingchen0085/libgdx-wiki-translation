@@ -41,6 +41,17 @@ public class MyGame implements ApplicationListener {
 | resume\(\) | 该方法只会在安卓平台触发，当游戏从暂停状态恢复时执行。 |
 | dispose\(\) | 应用程序退出/关闭时执行，再执行该方法之前会先执行 pause\(\) 方法。 |
 
+下图是能够直观说明生命周期：
+
+![](/assets/1411img.png)
+
+## 游戏的主循环在哪？
+
+由于JavaScript 和 Android 的工作方式，Libgdx 以事件驱动为核心，没有显式主循环。但是， `ApplicationListener.render()` 可以视为主循环的主体。
+
+## 还可以看看
+
+如果你想要再安卓平台上处理动画逻辑，可以参考[这篇文章](http://bitiotic.com/blog/2013/05/23/libgdx-and-android-application-lifecycle/)。此文章还解释了为什么不推荐是用静态变量。
 
 
 
@@ -58,6 +69,53 @@ public class MyGame implements ApplicationListener {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+平台上
 
 
 
