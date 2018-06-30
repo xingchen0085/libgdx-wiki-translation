@@ -30,7 +30,7 @@ public class MyGame implements ApplicationListener {
 
 另外，你也可以通过继承 [ApplicationAdapter](http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/ApplicationAdapter.html) ，从而不去实现`ApplicationListener`的所有方法。
 
-一旦实例传递给 `Application`，`ApplicationListener`调用方式如下：
+实例传递给 `Application` 之后，`ApplicationListener`调用方式如下：
 
 | 方法名 | 描述 |
 | :--- | :--- |
