@@ -36,13 +36,22 @@ public class AndroidStarter extends AndroidApplication {
 }
 ```
 
-这两个类通常会位于不同的项目模块中，例如一个属于桌面项目模块，一个属于Android项目模块。关于使用Eclipese上，每个项目的分模块，运行和调试可以[点击这里](https://github.com/libgdx/libgdx/wiki/Project-setup,-running-&-debugging)获取更多帮助。
+这两个类通常会位于不同的项目模块中，例如一个属于桌面项目模块，一个属于Android项目模块。使用Eclipese，每个项目的分模块，运行和调试可以[点击这里](https://github.com/libgdx/libgdx/wiki/Project-setup,-running-&-debugging)获取更多帮助。
 
 应用程序（游戏）的实际代码位于实现 [ApplicationListener ](https://github.com/libgdx/libgdx/tree/master/gdx/src/com/badlogic/gdx/ApplicationListener.java)的类中（上面的 Mygame 就是一个例子）。将这个实现类的实例传递到每个不同平台的启动类中（参考上面代码），应用程序会在适当的时间调用 ApplicationListener 的方法（[点击这里](https://github.com/libgdx/libgdx/wiki/The-life-cycle)可以看到 Application 的生命周期相关资料）。
 
 关于启动类可以[点击这里](https://github.com/libgdx/libgdx/wiki/Starter-classes-and-configuration)获取更多细节。
 
+## 访问组件
 
+可以使用 Gdx 类中的静态字段访问上述的各个组件，本质上这是一组全局变量。虽然这样的设计并不好，但我们还是决定使用这一机制来缓解给各个地方引用传递和底层代码交互带来的复杂性。
+
+比如说，需要访问一个 Audio 组件，可以使用下面示例来实现：
+
+```java
+// 创建一个 16-bit PCM 音频实例
+AudioDevice audioDevice = Gdx.audio.newAudioDevice(44100, false);
+```
 
 
 
