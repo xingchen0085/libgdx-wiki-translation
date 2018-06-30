@@ -6,5 +6,15 @@
 
 ## 官方资料
 
-如果你想开始编写以Libgdx开发框架为基础的代码，可以点击这里进入Libgdx官方网站，学习如何
+如果你想开始编写以Libgdx开发框架为基础的代码，可以[点击这里](https://libgdx.badlogicgames.com/documentation/)进入Libgdx官方网站，学习如何安装开发环境，创建和导入工程。
+
+[点击这里](https://github.com/libgdx/libgdx/wiki/Getting-Help)可以获取帮助
+
+## Wiki目录
+
+
+
+
+
+
 
