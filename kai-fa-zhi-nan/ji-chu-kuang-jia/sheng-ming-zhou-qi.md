@@ -41,7 +41,7 @@ public class MyGame implements ApplicationListener {
 | resume\(\) | 该方法只会在安卓平台触发，当游戏从暂停状态恢复时执行。 |
 | dispose\(\) | 应用程序退出/关闭时执行，再执行该方法之前会先执行 pause\(\) 方法。 |
 
-下图是能够直观说明生命周期：
+下图是能够直观解释生命周期：
 
 ![](/assets/1411img.png)
 
