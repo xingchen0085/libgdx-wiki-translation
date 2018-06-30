@@ -47,13 +47,13 @@ Wiki 的链接请使用`[[` 和 `]]` ，链接和文本之间请使用`|`分隔�
 
 * `Classname (Code)`  请使用常见英文单词，尽量不要使用源代码或者其他派生词。
 
-* 如果链接或者文档名称是以 `" ) "` 结尾的，Markerdown 会解析该 `" ) "`，导致链接混乱。以此为例：
+* 如果链接或者文档名称是以 `" ) "` 结尾的，Markerdown解析后会导致链接出错。以此为例：
 
 ```
 http://libgdx.badlogicgames.comightlies/docs/api/com/badlogic/gdx/graphics/Texture.html#getWidth()
 ```
 
-上面的链接，经过Markerdown 解析之后就会混乱，所以需要记住右括号`" ) "` 加上转义，如下：
+上面的链接，经过Markerdown 解析之后就会混乱出错，所以记住右括号`" ) "` 需要加上转义，如下：
 
 ```
 [Link to Texture#getWidth](http:
