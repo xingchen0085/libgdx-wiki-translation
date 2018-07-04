@@ -8,7 +8,7 @@ Libgdx 包含了典型游戏架构的每个步骤提供服务的所有组件。
 * [_**Graphics**_](https://github.com/libgdx/libgdx/wiki/Graphics) - 由底层的 OpenGL 提供的实现，将纹理图片绘制到屏幕上。
 * [_**Files**_](https://github.com/libgdx/libgdx/wiki/File-handling) - 无论是什么平台，都可以通过此组件方便的进行文件读写。
 * [_**Audio**_](https://github.com/libgdx/libgdx/wiki/Audio) -跨平台实现录音和播放。
-* [_**Networking**_](https://github.com/libgdx/libgdx/wiki/Networking) - 提供执行网络的方法。
+* [_**Networking**_](https://github.com/libgdx/libgdx/wiki/Networking) - 提供执行网络的方法。比如简单的HTTP GET/POST 请求，包括 TCP服务端/客户端 Socket链接。
 
 
 
