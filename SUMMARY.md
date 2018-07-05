@@ -7,4 +7,5 @@
   * [基础框架](kai-fa-zhi-nan/ji-chu-kuang-jia.md)
     * [生命周期](kai-fa-zhi-nan/ji-chu-kuang-jia/sheng-ming-zhou-qi.md)
     * [组件概述](kai-fa-zhi-nan/ji-chu-kuang-jia/zu-jian-gai-shu.md)
+    * [起始类和配置](kai-fa-zhi-nan/ji-chu-kuang-jia/qi-shi-lei-he-pei-zhi.md)
 

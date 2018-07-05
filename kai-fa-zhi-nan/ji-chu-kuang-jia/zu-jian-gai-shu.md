@@ -10,7 +10,7 @@ Libgdx 包含了典型游戏架构的每个步骤提供服务的所有组件。
 * [_**Audio**_](https://github.com/libgdx/libgdx/wiki/Audio) -跨平台实现录音和播放。
 * [_**Networking**_](https://github.com/libgdx/libgdx/wiki/Networking) - 提供执行网络的方法。比如简单的HTTP GET/POST 请求，包括 TCP服务端/客户端 Socket链接。
 
-下面的示意图讲展示简单的游戏架构中的组件关系。
+下面的示意图展示了简单游戏架构中的组件关系。
 
 ![](/assets/zjgs1.png)
 
@@ -18,7 +18,7 @@ Libgdx 包含了典型游戏架构的每个步骤提供服务的所有组件。
 
 ## 组件
 
-### Input 
+### Input（输入）
 
 _Input _实现了各个平台的输入状态轮询监听，可以轮询每个按键、触屏和加速度。不过在桌面环境下，触屏将被替换为鼠标点击，加速度也无法使用。
 
@@ -34,7 +34,7 @@ if (Gdx.input.isTouched()) {
 
 类似的方式，可以轮询和处理所有支持的输入方式。
 
-### Graphics
+### Graphics（图形）
 
 _Graphics _抽象了与GPU的通信，也可以通过此模块获取OpenGL ES 包装器的实例。该组件实现了OpenGL所提供的所有接口和方法。
 
@@ -68,7 +68,7 @@ gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 要了解更多关于 _Graphics  _组件的内容，可以[点击这里](https://github.com/libgdx/libgdx/wiki/Graphics-module)查看文档。
 
-### Files
+### Files（文件）
 
 _Files _组件提供了一个通用的方法来访问不同环境下的文件系统，让读写文件更加简便。不过在写文件上，可能不同平台会有一定限制。
 
@@ -82,7 +82,7 @@ Texture myTexture = new Texture(Gdx.files.internal("assets/textures/brick.png"))
 
 这是一个非常强大文件加载方式，因为它适用于Android和桌面环境。
 
-### Audio
+### Audio（声音）
 
 _Audio _组件让创建和播放音频变得非常方便，也提供了访问物理环境音频的方法。
 
@@ -101,7 +101,7 @@ music.play();
 music.setLooping(true);
 ```
 
-### Networking
+### Networking（网络）
 
 _Networking_ 组件，在网络游戏中，添加多个玩家，把玩家信息传输到服务器，或者执行其他网络任务时，显得极其重要。这些功能可以每个平台使用，但是需要注意有的平台可能有一些注意事项或者缺少一些功能。
 
@@ -131,30 +131,6 @@ HttpRequest httpRequest = requestBuilder.newRequest()
    .build();
 Gdx.net.sendHttpRequest(httpRequest, httpResponseListener);
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
