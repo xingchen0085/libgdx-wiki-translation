@@ -155,7 +155,7 @@ public class AndroidLauncher extends FragmentActivity implements AndroidFragment
 
 将其设置为你的安卓SDK版本。
 
-**screenOrientation** & configChanges
+**screenOrientation & configChanges**
 
 除了设置SDK版本之外，activity 节点内的 `screenOrientation` 和 `configChanges `属性通常都需要配置。
 
@@ -348,7 +348,31 @@ public class DaydreamSettings extends Activity {
 
 ## HTML5/GWT
 
+HTML5/GWT 应用主要入口是`GwtApplication` ，打开 `my-gdx-game-html5 `项目的 `GwtLauncher.java `类：
 
+```java
+package com.me.mygdxgame.client;
+
+import com.me.mygdxgame.MyGdxGame;
+import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.backends.gwt.GwtApplication;
+import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
+
+public class GwtLauncher extends GwtApplication {
+   @Override
+   public GwtApplicationConfiguration getConfig () {
+      GwtApplicationConfiguration cfg = new GwtApplicationConfiguration(480, 320);
+      return cfg;
+   }
+
+   @Override
+   public ApplicationListener createApplicationListener () {
+      return new MyGdxGame();
+   }
+}
+```
+
+起始类由 `GwtApplication.getConfig()` 和 `GwtApplication.createApplicationListener()` 两个方法组成，前者需要返回一个 [GwtApplicationConfiguration](https://github.com/libgdx/libgdx/blob/master/backends/gdx-backends-gwt/src/com/badlogic/gdx/backends/gwt/GwtApplicationConfiguration.java) 实例，该实例指定了HTML5应用程序的各种设置配置。`GwtApplication.createApplicatonListener()`  方法返回 `ApplicationListener` 用来运行。
 
 
 
