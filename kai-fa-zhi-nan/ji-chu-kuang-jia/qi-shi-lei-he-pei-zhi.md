@@ -151,11 +151,11 @@ public class AndroidLauncher extends FragmentActivity implements AndroidFragment
 </manifest>
 ```
 
-#####targetSdkVersion
+##### targetSdkVersion
 
 将其设置为你的安卓SDK版本。
 
-#####screenOrientation & configChanges
+##### screenOrientation & configChanges
 
 除了设置SDK版本之外，activity 节点内的 `screenOrientation` 和 `configChanges `属性通常都需要配置。
 
@@ -163,7 +163,7 @@ public class AndroidLauncher extends FragmentActivity implements AndroidFragment
 
 `configChanges`  属性很重要，而且应该配置上面的那些值。如果忽略该属性，意味着每次键盘的滑入/滑出和设备方向改变时，都会重新启动应用。如果`screenOrientation `不进行配置，Libgdx 在设备方向发生变化之后，会调用 `ApplicationListener.resize()` ，然后在API客户端进行相应的布局重排。
 
-#####Permissions
+##### Permissions
 
 如果应用程序需要使用设备的外部存储（比如SDcard），或者使用网络、手机振动、播放音乐等，需要在 `AndroidManifest.xml` 文件加上对应权限：
 
@@ -182,8 +182,6 @@ public class AndroidLauncher extends FragmentActivity implements AndroidFragment
 如果你的游戏需要陀螺仪，可以把AndroidApplicationConfiguration的 `useGyroscope`  设置为true (这个值为了节省电量，默认是关闭的)。
 
 你也可以[点击这里](https://developer.android.com/guide/)获取配置该文件的更多信息，比如设置应用的图标等。
-
-
 
 #### Live Wallpapers
 
@@ -276,7 +274,7 @@ LiveWallpaper 被选取或者创建在屏幕显示时将会调用 `createListene
 
 LiveWallpaper通常在输入的时候会有一些限制，只会对点击/拖放产生反馈。如果你需要更多的多点触控事件，可以将`AndroidApplicationConfiguration#getTouchEventsForLiveWallpaper` 标记为true。
 
-####Daydreams
+#### Daydreams
 
 在安卓4.2版本之后，可以给处于空闲的设备设置一些[屏保](https://developer.android.com/about/versions/android-4.2#Daydream)，比如显示图片等等。Libgdx可以帮你轻松实现这个功能。
 
@@ -344,11 +342,11 @@ public class DaydreamSettings extends Activity {
 </service>
 ```
 
-###iOS/Robovm
+### iOS/Robovm
 
 即将到来...
 
-###HTML5/GWT
+### HTML5/GWT
 
 
 
