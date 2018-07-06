@@ -67,7 +67,7 @@ public class MainActivity extends AndroidApplication {
 
 安卓应用通常会有多个 Activity ，但 Libgds 项目通常只会存在一个 Activity ，在Libgdx 中，可以使用多个不同的 Screen 来切换不同场景，而不是使用多个 Activity。原因是每创建一个 Activity ，都会创建一个新的 OpenGL 上下文，这是一个耗时的操作，而且还会重新加载游戏资源。
 
-### 基于Fragment 的 Libgdx
+### Fragment
 
 安卓的SDK 介绍了一种 API ，可以在界面上创建一块可控区域，它用来做不同的 Screen 在合适不过了。这个 API 就是 [Fragments API](http://developer.android.com/guide/components/fragments.html) 。Libgdx 现在也可以用作是 Fragment 中的一块很大的区域。创建一个 Libgdx 区域，可以像下面示例一样，继承 `AndroidFragmentApplication`之后，重写 `onCreateView()`方法：
 
@@ -120,7 +120,7 @@ public class AndroidLauncher extends FragmentActivity implements AndroidFragment
 }
 ```
 
-### AndroidManifest.xml 文件
+####AndroidManifest.xml 文件
 
 除了 `AndroidApplicationConfiguration` 之外，对于安卓项目，我们还需要配置 `AndroidManifest.xml` 文件。你可以在安卓项目的根目录找到它，看起来大概是下面这个样子：
 
@@ -151,15 +151,206 @@ public class AndroidLauncher extends FragmentActivity implements AndroidFragment
 </manifest>
 ```
 
-#### targetSdkVersion
+#####targetSdkVersion
 
 将其设置为你的安卓SDK版本。
 
-#### screenOrientation & configChanges
+#####screenOrientation & configChanges
 
 除了设置SDK版本之外，activity 节点内的 `screenOrientation` 和 `configChanges `属性通常都需要配置。
 
 `screenOrientation `这一属性指定了应用程序屏幕固定方向（横向还是纵向），如果应用程序同时支持横向和纵向，则可以忽略。
+
+`configChanges`  属性很重要，而且应该配置上面的那些值。如果忽略该属性，意味着每次键盘的滑入/滑出和设备方向改变时，都会重新启动应用。如果`screenOrientation `不进行配置，Libgdx 在设备方向发生变化之后，会调用 `ApplicationListener.resize()` ，然后在API客户端进行相应的布局重排。
+
+#####Permissions
+
+如果应用程序需要使用设备的外部存储（比如SDcard），或者使用网络、手机振动、播放音乐等，需要在 `AndroidManifest.xml` 文件加上对应权限：
+
+```xml
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/><!-- 存储 -->
+<uses-permission android:name="android.permission.VIBRATE"/><!-- 振动 -->
+<uses-permission android:name="android.permission.RECORD_AUDIO"/><!-- 音乐 -->
+```
+
+用户通常会不信任权限很多的应用，所以需要明智考虑需要使用那些。
+
+需要保持屏幕常亮，需要将 `AndroidApplicationConfiguration.useWakeLock` 设置为 true 。
+
+如果游戏中不需要加速度和指南针，建议将其设置为不可用。把AndroidApplicationConfiguration中的`useAccelerometer` 和 `useCompass`  设置为 false 。
+
+如果你的游戏需要陀螺仪，可以把AndroidApplicationConfiguration的 `useGyroscope`  设置为true (这个值为了节省电量，默认是关闭的)。
+
+你也可以[点击这里](https://developer.android.com/guide/)获取配置该文件的更多信息，比如设置应用的图标等。
+
+
+
+#### Live Wallpapers
+
+Libgdx给安卓项目提供了以个简便的方法来作为入口类，就是 [Live Wallpapers](http://android-developers.blogspot.co.at/2010/02/live-wallpapers.html) 。这个类叫做 `AndroidLiveWallpaperService` ，下面是一个例子：
+
+```java
+package com.mypackage;
+
+// 为了简洁省略导包的代码 
+
+public class LiveWallpaper extends AndroidLiveWallpaperService {
+	@Override
+	public ApplicationListener createListener () {
+		return new MyApplicationListener();
+	}
+
+	@Override
+	public AndroidApplicationConfiguration createConfig () {
+		return new AndroidApplicationConfiguration();
+	}
+
+	@Override
+	public void offsetChange (ApplicationListener listener, float xOffset, float yOffset, float xOffsetStep, float yOffsetStep,
+		int xPixelOffset, int yPixelOffset) {
+		Gdx.app.log("LiveWallpaper", "offset changed: " + xOffset + ", " + yOffset);
+	}
+}
+```
+
+LiveWallpaper 被选取或者创建在屏幕显示时将会调用 `createListener()` 和 `createConfig()` 方法。
+
+当用户在主屏幕上滑动时，会调用 `offsetChange()` 方法，会告诉你偏离中心的程度。这个方法将会在渲染的线程中调用，所以你不用同步任何东西。
+
+添加LiveWallpaper 之后，你还需要创建一个XML文件来描述你的LiveWallpaper ，我们把它定义为  livewallpaper.xml ，在你的安卓项目的 `res/` 目录下创建 `xml/`目录，然后将这个xml文件放进去（res/xml/livewallpaper.xml ）。 下面是这个文件的内容：
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<wallpaper
+       xmlns:android="http://schemas.android.com/apk/res/android"  
+       android:thumbnail="@drawable/ic_launcher" 
+       android:description="@string/description"
+       android:settingsActivity="com.mypackage.LivewallpaperSettings"/>
+```
+
+这里定义了应用的图标，描述和用户点击"设置"时用作处理逻辑的一个Activity（LivewallpaperSettings）。LiveWallpaper提供了一个默认的Activity，里面包含了调节背景颜色和一些类似的基础功能部件。你可以保存这些设置到SharedPreferences 中，在ApplicationListener 中通过 `Gdx.app.getPreferences()` 加载这些设置。
+
+最后，你需要在 `AndroidManifest.xml` 文件中加一些东西。下面是一个配置的例子：
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.mypackage"
+      android:versionCode="1"
+      android:versionName="1.0"
+      android:installLocation="preferExternal">
+	<uses-sdk android:minSdkVersion="7" android:targetSdkVersion="14"/>	
+	<uses-feature android:name="android.software.live_wallpaper" />
+		
+	<application android:icon="@drawable/icon" android:label="@string/app_name">
+		<activity android:name=".LivewallpaperSettings" 
+				  android:label="Livewallpaper Settings"/>
+		
+		<service android:name=".LiveWallpaper"
+            android:label="@string/app_name"
+            android:icon="@drawable/icon"
+            android:permission="android.permission.BIND_WALLPAPER">
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+            </intent-filter>
+            <meta-data android:name="android.service.wallpaper"
+                android:resource="@xml/livewallpaper" />
+        </service>				  	
+	</application>
+</manifest> 
+```
+
+清单（文件）定义内容：
+
+1. 使用LiveWallpaper功能，看这里：`<uses-feature/>`
+
+2. 一个允许绑定LiveWallpaper的权限，看这里：`android:permission `
+
+3. 注册“设置”的Activity
+
+   `<activity android:name=".LivewallpaperSettings" android:label="LivewallpaperSettings"/>`
+
+4. 注册LiveWallpaper的服务，指引。看这里：`<meta-data/>`
+
+注意：LiveWallpaper仅支持Android 2.1 (SDK 7)以上版本。
+
+LiveWallpaper通常在输入的时候会有一些限制，只会对点击/拖放产生反馈。如果你需要更多的多点触控事件，可以将`AndroidApplicationConfiguration#getTouchEventsForLiveWallpaper` 标记为true。
+
+####Daydreams
+
+在安卓4.2版本之后，可以给处于空闲的设备设置一些[屏保](https://developer.android.com/about/versions/android-4.2#Daydream)，比如显示图片等等。Libgdx可以帮你轻松实现这个功能。
+
+屏保的入口类叫做AndroidDaydream ，下面是一个例子：
+
+```java
+package com.badlogic.gdx.tests.android;
+
+import android.annotation.TargetApi;
+import android.util.Log;
+
+import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
+import com.badlogic.gdx.backends.android.AndroidDaydream;
+import com.badlogic.gdx.tests.MeshShaderTest;
+
+@TargetApi(17)
+public class Daydream extends AndroidDaydream {
+   @Override
+   public void onAttachedToWindow() {
+      super.onAttachedToWindow();      
+	  setInteractive(false);
+
+      AndroidApplicationConfiguration cfg = new AndroidApplicationConfiguration();
+      ApplicationListener app = new MeshShaderTest();
+      initialize(app, cfg);
+   }
+}
+```
+
+只需要继承AndroidDaydream，重写onAttachedToWindow()方法，然后配置AndroidApplicationConfiguration和ApplicationListener，再进行初始化。
+
+除了Daydream本身，你也可以给Daydream提供设置，让用户配置Daydream。可以使一个普通的Activity，也可以是Libgdx的`AndroidApplication` 。下面是一个空Activity的例子：
+
+```java
+package com.badlogic.gdx.tests.android;
+
+import android.app.Activity;
+
+public class DaydreamSettings extends Activity {
+
+}
+```
+
+必须将上述的设置Activity配置为Daydream 服务的元数据，在安卓项目的 `res/xml` 文件夹下创建一个xml，配置Activity。跟下面示例差不多：
+
+```xml
+<dream xmlns:android="http://schemas.android.com/apk/res/android"
+ android:settingsActivity="com.badlogic.gdx.tests.android/.DaydreamSettings" />
+```
+
+最后，跟之前一样，在 AndroidManifest.xml 文件中添加Activity和Daydream 描述信息：
+
+```xml
+<service android:name=".Daydream"
+   android:label="@string/app_name"
+   android:icon="@drawable/icon"
+   android:exported="true">
+   <intent-filter>
+	   <action android:name="android.service.dreams.DreamService" />
+	   <category android:name="android.intent.category.DEFAULT" />
+   </intent-filter>
+   <meta-data android:name="android.service.dream"
+	   android:resource="@xml/daydream" />
+</service>
+```
+
+###iOS/Robovm
+
+即将到来...
+
+###HTML5/GWT
+
+
 
 
 
