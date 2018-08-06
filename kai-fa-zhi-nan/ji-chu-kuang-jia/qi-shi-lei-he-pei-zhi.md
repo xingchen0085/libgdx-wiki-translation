@@ -65,7 +65,7 @@ public class MainActivity extends AndroidApplication {
 
 使用`Activity` 的 `onCreate()`方法作为入口方法。需要注意的是，`MainActivity`继承了 `AndroidApplication`，另外 `AndroidApplication`本身也继承了 `Activity`.跟桌面环境差不多，也要创建一个配置类（[AndroidApplicationConfiguration](https://github.com/libgdx/libgdx/tree/master/backends/gdx-backend-android/src/com/badlogic/gdx/backends/android/AndroidApplicationConfiguration.java)）。配置完成之后，调用 `AndroidApplication.initialize()`方法，将 `ApplicationListener` 实现实例`MyGdxGame()`传递给此方法。关于[AndroidApplicationConfiguration](https://github.com/libgdx/libgdx/tree/master/backends/gdx-backend-android/src/com/badlogic/gdx/backends/android/AndroidApplicationConfiguration.java) 的更多信息，可以[点击JavaDoc](https://libgdx.badlogicgames.com/ci/nightlies/docs/api/com/badlogic/gdx/backends/android/AndroidApplicationConfiguration.html) 查看可以配置那些选项。
 
-安卓应用通常会有多个 Activity ，但 Libgds 项目通常只会存在一个 Activity ，在Libgdx 中，可以使用多个不同的 Screen 来切换不同场景，而不是使用多个 Activity。原因是每创建一个 Activity ，都会创建一个新的 OpenGL 上下文，这是一个耗时的操作，而且还会重新加载游戏资源。
+安卓应用通常会有多个 Activity ，但 Libgdx 项目通常只会存在一个 Activity ，在Libgdx 中，可以使用多个不同的 Screen 来切换不同场景，而不是使用多个 Activity。原因是每创建一个 Activity ，都会创建一个新的 OpenGL 上下文，这是一个耗时的操作，而且还会重新加载游戏资源。
 
 ### Fragment
 
@@ -157,11 +157,11 @@ public class AndroidLauncher extends FragmentActivity implements AndroidFragment
 
 **screenOrientation & configChanges**
 
-除了设置SDK版本之外，activity 节点内的 `screenOrientation` 和 `configChanges `属性通常都需要配置。
+除了设置SDK版本之外，activity 节点内的 `screenOrientation` 和 `configChanges`属性通常都需要配置。
 
-`screenOrientation `这一属性指定了应用程序屏幕固定方向（横向还是纵向），如果应用程序同时支持横向和纵向，则可以忽略。
+`screenOrientation`这一属性指定了应用程序屏幕固定方向（横向还是纵向），如果应用程序同时支持横向和纵向，则可以忽略。
 
-`configChanges`  属性很重要，而且应该配置上面的那些值。如果忽略该属性，意味着每次键盘的滑入/滑出和设备方向改变时，都会重新启动应用。如果`screenOrientation `不进行配置，Libgdx 在设备方向发生变化之后，会调用 `ApplicationListener.resize()` ，然后在API客户端进行相应的布局重排。
+`configChanges`  属性很重要，而且应该配置上面的那些值。如果忽略该属性，意味着每次键盘的滑入/滑出和设备方向改变时，都会重新启动应用。如果`screenOrientation`不进行配置，Libgdx 在设备方向发生变化之后，会调用 `ApplicationListener.resize()` ，然后在API客户端进行相应的布局重排。
 
 **Permissions**
 
@@ -179,13 +179,13 @@ public class AndroidLauncher extends FragmentActivity implements AndroidFragment
 
 如果游戏中不需要加速度和指南针，建议将其设置为不可用。把AndroidApplicationConfiguration中的`useAccelerometer` 和 `useCompass`  设置为 false 。
 
-如果你的游戏需要陀螺仪，可以把AndroidApplicationConfiguration的 `useGyroscope`  设置为true (这个值为了节省电量，默认是关闭的)。
+如果你的游戏需要陀螺仪，可以把AndroidApplicationConfiguration的 `useGyroscope`  设置为true \(这个值为了节省电量，默认是关闭的\)。
 
 你也可以[点击这里](https://developer.android.com/guide/)获取配置该文件的更多信息，比如设置应用的图标等。
 
 ### Live Wallpapers
 
-Libgdx给安卓项目提供了以个简便的方法来作为入口类，就是 [Live Wallpapers](http://android-developers.blogspot.co.at/2010/02/live-wallpapers.html) 。这个类叫做 `AndroidLiveWallpaperService` ，下面是一个例子：
+Libgdx给安卓项目提供了以个简便的方法来作为入口类，就是 [Live Wallpapers](http://android-developers.blogspot.co.at/2010/02/live-wallpapers.html) 。这个类叫做 `AndroidLiveWallpaperService` ，下面是一个例子：
 
 ```java
 package com.mypackage;
@@ -193,21 +193,21 @@ package com.mypackage;
 // 为了简洁省略导包的代码 
 
 public class LiveWallpaper extends AndroidLiveWallpaperService {
-	@Override
-	public ApplicationListener createListener () {
-		return new MyApplicationListener();
-	}
+    @Override
+    public ApplicationListener createListener () {
+        return new MyApplicationListener();
+    }
 
-	@Override
-	public AndroidApplicationConfiguration createConfig () {
-		return new AndroidApplicationConfiguration();
-	}
+    @Override
+    public AndroidApplicationConfiguration createConfig () {
+        return new AndroidApplicationConfiguration();
+    }
 
-	@Override
-	public void offsetChange (ApplicationListener listener, float xOffset, float yOffset, float xOffsetStep, float yOffsetStep,
-		int xPixelOffset, int yPixelOffset) {
-		Gdx.app.log("LiveWallpaper", "offset changed: " + xOffset + ", " + yOffset);
-	}
+    @Override
+    public void offsetChange (ApplicationListener listener, float xOffset, float yOffset, float xOffsetStep, float yOffsetStep,
+        int xPixelOffset, int yPixelOffset) {
+        Gdx.app.log("LiveWallpaper", "offset changed: " + xOffset + ", " + yOffset);
+    }
 }
 ```
 
@@ -215,7 +215,7 @@ LiveWallpaper 被选取或者创建在屏幕显示时将会调用 `createListene
 
 当用户在主屏幕上滑动时，会调用 `offsetChange()` 方法，会告诉你偏离中心的程度。这个方法将会在渲染的线程中调用，所以你不用同步任何东西。
 
-添加LiveWallpaper 之后，你还需要创建一个XML文件来描述你的LiveWallpaper ，我们把它定义为  livewallpaper.xml ，在你的安卓项目的 `res/` 目录下创建 `xml/`目录，然后将这个xml文件放进去（res/xml/livewallpaper.xml ）。 下面是这个文件的内容：
+添加LiveWallpaper 之后，你还需要创建一个XML文件来描述你的LiveWallpaper ，我们把它定义为  livewallpaper.xml ，在你的安卓项目的 `res/` 目录下创建 `xml/`目录，然后将这个xml文件放进去（res/xml/livewallpaper.xml ）。 下面是这个文件的内容：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -237,14 +237,14 @@ LiveWallpaper 被选取或者创建在屏幕显示时将会调用 `createListene
       android:versionCode="1"
       android:versionName="1.0"
       android:installLocation="preferExternal">
-	<uses-sdk android:minSdkVersion="7" android:targetSdkVersion="14"/>	
-	<uses-feature android:name="android.software.live_wallpaper" />
-		
-	<application android:icon="@drawable/icon" android:label="@string/app_name">
-		<activity android:name=".LivewallpaperSettings" 
-				  android:label="Livewallpaper Settings"/>
-		
-		<service android:name=".LiveWallpaper"
+    <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="14"/>    
+    <uses-feature android:name="android.software.live_wallpaper" />
+
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name=".LivewallpaperSettings" 
+                  android:label="Livewallpaper Settings"/>
+
+        <service android:name=".LiveWallpaper"
             android:label="@string/app_name"
             android:icon="@drawable/icon"
             android:permission="android.permission.BIND_WALLPAPER">
@@ -253,16 +253,16 @@ LiveWallpaper 被选取或者创建在屏幕显示时将会调用 `createListene
             </intent-filter>
             <meta-data android:name="android.service.wallpaper"
                 android:resource="@xml/livewallpaper" />
-        </service>				  	
-	</application>
-</manifest> 
+        </service>                      
+    </application>
+</manifest>
 ```
 
 清单（文件）定义内容：
 
 1. 使用LiveWallpaper功能，看这里：`<uses-feature/>`
 
-2. 一个允许绑定LiveWallpaper的权限，看这里：`android:permission `
+2. 一个允许绑定LiveWallpaper的权限，看这里：`android:permission`
 
 3. 注册“设置”的Activity
 
@@ -270,7 +270,7 @@ LiveWallpaper 被选取或者创建在屏幕显示时将会调用 `createListene
 
 4. 注册LiveWallpaper的服务，指引。看这里：`<meta-data/>`
 
-注意：LiveWallpaper仅支持Android 2.1 (SDK 7)以上版本。
+注意：LiveWallpaper仅支持Android 2.1 \(SDK 7\)以上版本。
 
 LiveWallpaper通常在输入的时候会有一些限制，只会对点击/拖放产生反馈。如果你需要更多的多点触控事件，可以将`AndroidApplicationConfiguration#getTouchEventsForLiveWallpaper` 标记为true。
 
@@ -296,7 +296,7 @@ public class Daydream extends AndroidDaydream {
    @Override
    public void onAttachedToWindow() {
       super.onAttachedToWindow();      
-	  setInteractive(false);
+      setInteractive(false);
 
       AndroidApplicationConfiguration cfg = new AndroidApplicationConfiguration();
       ApplicationListener app = new MeshShaderTest();
@@ -305,7 +305,7 @@ public class Daydream extends AndroidDaydream {
 }
 ```
 
-只需要继承AndroidDaydream，重写onAttachedToWindow()方法，然后配置AndroidApplicationConfiguration和ApplicationListener，再进行初始化。
+只需要继承AndroidDaydream，重写onAttachedToWindow\(\)方法，然后配置AndroidApplicationConfiguration和ApplicationListener，再进行初始化。
 
 除了Daydream本身，你也可以给Daydream提供设置，让用户配置Daydream。可以使一个普通的Activity，也可以是Libgdx的`AndroidApplication` 。下面是一个空Activity的例子：
 
@@ -334,11 +334,11 @@ public class DaydreamSettings extends Activity {
    android:icon="@drawable/icon"
    android:exported="true">
    <intent-filter>
-	   <action android:name="android.service.dreams.DreamService" />
-	   <category android:name="android.intent.category.DEFAULT" />
+       <action android:name="android.service.dreams.DreamService" />
+       <category android:name="android.intent.category.DEFAULT" />
    </intent-filter>
    <meta-data android:name="android.service.dream"
-	   android:resource="@xml/daydream" />
+       android:resource="@xml/daydream" />
 </service>
 ```
 
@@ -348,7 +348,7 @@ public class DaydreamSettings extends Activity {
 
 ## HTML5/GWT
 
-HTML5/GWT 应用主要入口是`GwtApplication` ，打开 `my-gdx-game-html5 `项目的 `GwtLauncher.java `类：
+HTML5/GWT 应用主要入口是`GwtApplication` ，打开 `my-gdx-game-html5`项目的 `GwtLauncher.java`类：
 
 ```java
 package com.me.mygdxgame.client;
@@ -373,32 +373,4 @@ public class GwtLauncher extends GwtApplication {
 ```
 
 起始类由 `GwtApplication.getConfig()` 和 `GwtApplication.createApplicationListener()` 两个方法组成，前者需要返回一个 [GwtApplicationConfiguration](https://github.com/libgdx/libgdx/blob/master/backends/gdx-backends-gwt/src/com/badlogic/gdx/backends/gwt/GwtApplicationConfiguration.java) 实例，该实例指定了HTML5应用程序的各种设置配置。`GwtApplication.createApplicatonListener()`  方法返回 `ApplicationListener` 用来运行。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
